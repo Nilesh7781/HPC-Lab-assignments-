@@ -1,0 +1,38 @@
+Write a C program utilizing OpenMP directives to demonstrate the behavior of the private clause. 
+▪ The program should perform the following steps:  
+▪ Initialize OpenMP with 4 threads. 
+▪ Declare an integer variable val and initialize it to a value of 1234. 
+▪ Print the initial value of val outside the OpenMP parallel region. 
+▪ Enter an OpenMP parallel region using the omp parallel directive, with the firstprivate clause applied to the variable val. 
+▪ Inside the parallel region, each thread should print the current value of val, increment it by 1, and then print the updated value. 
+▪ Print the final value of val outside the parallel region
+
+#include <stdio.h>
+#include <omp.h>
+
+int main() {
+    int val = 1234;
+
+    // Print initial value outside parallel region
+    printf("Initial value of val (outside parallel region): %d\n", val);
+
+    // Parallel region with firstprivate
+    #pragma omp parallel firstprivate(val) num_threads(4)
+    {
+        int tid = omp_get_thread_num();
+        
+        // Print current value of val for each thread
+        printf("Thread %d: initial val = %d\n", tid, val);
+
+        // Increment val inside each thread
+        val++;
+
+        // Print updated value inside each thread
+        printf("Thread %d: updated val = %d\n", tid, val);
+    }
+
+    // Print final value of val outside parallel region
+    printf("Final value of val (outside parallel region): %d\n", val);
+
+    return 0;
+}
