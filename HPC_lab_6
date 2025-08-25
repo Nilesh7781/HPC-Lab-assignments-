@@ -1,0 +1,18 @@
+Write a C program utilizing OpenMP directives to demonstrate the behavior of the private clause. 
+Steps to follow : 
+▪ Open text editor. 
+▪ write the below program in it. 
+▪ Save the file with .c extentation. 
+▪ Compile and execuate with given commands. 
+
+Example Output (order may vary due to thread scheduling)
+Initial value of val (outside parallel region): 1234
+Thread 0: initial val = 1234
+Thread 0: updated val = 1235
+Thread 1: initial val = 1234
+Thread 1: updated val = 1235
+Thread 2: initial val = 1234
+Thread 2: updated val = 1235
+Thread 3: initial val = 1234
+Thread 3: updated val = 1235
+Final value of val (outside parallel region): 1234
